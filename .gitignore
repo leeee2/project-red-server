@@ -35,3 +35,26 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### macOS ###
+.DS_Store
+
+### Local secrets (never commit) ###
+.env
+.env.*
+!.env.example
+application-local.yaml
+application-local.yml
+application-secret.yaml
+application-secret.yml
+
+### Logs ###
+*.log
+logs/
+
+### Certificates and keys ###
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
