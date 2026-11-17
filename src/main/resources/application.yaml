@@ -1,3 +1,68 @@
 spring:
   application:
     name: red
+
+  output:
+    ansi:
+      enabled: always
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+  modulith:
+    events:
+      republish-outstanding-events-on-restart: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,modulith
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    sql: debug
+    com.project.red: debug
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  output:
+    ansi:
+      enabled: never
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  docker:
+    compose:
+      enabled: false
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+logging:
+  level:
+    sql: warn
+    com.project.red: info
