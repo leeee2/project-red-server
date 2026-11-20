@@ -56,6 +56,12 @@ spring:
       hibernate:
         format_sql: false
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
 springdoc:
   api-docs:
     enabled: false
